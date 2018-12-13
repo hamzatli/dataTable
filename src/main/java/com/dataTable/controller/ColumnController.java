@@ -4,6 +4,7 @@ package com.dataTable.controller;
 import com.dataTable.model.Columns;
 import com.dataTable.service.ColumnService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

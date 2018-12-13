@@ -22,11 +22,14 @@ public class LoggerAspect {
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = buildMethodName(joinPoint);
         String requestData = buildRequestData(joinPoint);
+
+
         info("REQUEST: " + methodName.concat(" ").concat(requestData));
 
         Object returnValue = joinPoint.proceed();
 
         info("RESPONSE: " + methodName.concat(" ").concat(objectMapper.writeValueAsString(returnValue)));
+
         return returnValue;
     }
 

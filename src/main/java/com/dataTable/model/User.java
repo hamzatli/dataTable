@@ -21,8 +21,7 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
-    private String name;
+
 
     @Column(name = "username")
     private String username;
@@ -30,13 +29,12 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "role")
-    private String role;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "role_id", unique = true, nullable = false, updatable = false)
+    private Role role;
 
 
-    public String getName() {
-        return name;
-    }
+
 
     public String getUsername() {
         return username;
@@ -46,8 +44,8 @@ public class User {
         return password;
     }
 
-    public User(String name, String username, String password, String role) {
-        this.name = name;
+    public User( String username, String password, Role role) {
+
         this.username = username;
         this.password = password;
         this.role = role;
