@@ -12,7 +12,7 @@ public interface ColumnService {
 
     void delete(Integer id);
 
-    void update (Columns columns);
+    Columns update (Columns columns);
 
     List<Columns> getAll();
 

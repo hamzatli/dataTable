@@ -23,6 +23,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         com.dataTable.model.User user = userService.getUsername(username);
-        return (UserDetails) new com.dataTable.model.User( user.getUsername(), user.getPassword(), user.getRole() );
+        return (UserDetails) new com.dataTable.model.User(  user.getUsername(), user.getPassword(), user.getRole() );
     }
 }

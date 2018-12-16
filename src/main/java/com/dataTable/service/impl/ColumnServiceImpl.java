@@ -32,9 +32,38 @@ public class ColumnServiceImpl implements ColumnService {
     }
 
     @Override
-    public void update(Columns columns) {
+    public Columns update(Columns columns) {
 
+        if(Objects.isNull(columns)
+                || Objects.isNull(columns.getId()))
+            return null;
+        Optional<Columns> last = columnRepository.findById(columns.getId());
+        if(last.isPresent()) {
+            Columns colum = last.get();
 
+            String newname = columns.getName();
+            String newsurname = columns.getSurname();
+            Integer newage = columns.getAge();
+            Integer newsalary = columns.getSalary();
+
+            if(Objects.nonNull(newname)) {
+                colum.setName(newname);
+            }
+
+            if(Objects.nonNull(newsurname)) {
+                colum.setSurname(newsurname);
+            }
+            if(newage != null) {
+                colum.setAge(newage);
+            }
+            if(newsalary != null) {
+                colum.setSalary(newsalary);
+            }
+
+            columnRepository.save(colum);
+            return last.get();
+        }
+        return null;
 
     }
 

@@ -21,6 +21,10 @@ public class ColumnController {
         return columnService.getAll();
     }
 
+    @PutMapping
+    public Columns update(@RequestBody Columns columns){
+        return columnService.update(columns);
+    }
 
     @GetMapping("/{id}")
     public Columns getOne (@PathVariable Integer id){
