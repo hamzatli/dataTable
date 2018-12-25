@@ -1,41 +1,43 @@
 package com.dataTable.service.impl;
 
-import com.dataTable.model.User;
-import com.dataTable.repository.UserRepository;
+import com.dataTable.model.AppUser;
+import com.dataTable.repository.AppUserRepository;
 import com.dataTable.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private AppUserRepository appUserRepository;
+
 
     @Override
-    public User save(User user) {
-        if (!Objects.isNull(user)) {
-            return userRepository.save(user);
+    public AppUser save(AppUser appUser) {
+        if (!Objects.isNull(appUser)) {
+            return appUserRepository.save(appUser);
         }
         else return null;
     }
 
 
     @Override
-    public User getUser(Integer id) {
-        return userRepository.findById(id).orElse(null);
+    public AppUser getUser(Integer id) {
+        return appUserRepository.findById(id).orElse(null);
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return (List<User>) userRepository.findAll();
+    public List<AppUser> getAllUsers() {
+        return (List<AppUser>) appUserRepository.findAll();
     }
 
     @Override
-    public User getUsername(String username) {
-        return userRepository.findByUsername(username);
+    public Optional<AppUser> getUsername(String username) {
+        return appUserRepository.findByUsername(username);
     }
 }

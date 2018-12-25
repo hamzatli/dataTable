@@ -1,17 +1,18 @@
 package com.dataTable.service;
 
-import com.dataTable.model.User;
+import com.dataTable.model.AppUser;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserService {
 
-    User save(User user);
+    AppUser save(AppUser appUser);
 
-    User getUser(Integer id);
+    AppUser getUser(Integer id);
 
-    List<User> getAllUsers();
+    List<AppUser> getAllUsers();
 
-    User getUsername(String username);
+    Optional<AppUser> getUsername(String username);
 
 }

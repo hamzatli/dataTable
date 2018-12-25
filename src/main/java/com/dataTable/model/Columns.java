@@ -3,13 +3,15 @@ package com.dataTable.model;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 
 @Entity
 @Table(name = "columns")
-
+@Getter
+@Setter
 public class Columns {
 
     @Id
@@ -30,23 +32,5 @@ public class Columns {
     private Integer salary;
 
 
-    public Integer getId() {
-        return id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public Integer getSalary() {
-        return salary;
-    }
 }
