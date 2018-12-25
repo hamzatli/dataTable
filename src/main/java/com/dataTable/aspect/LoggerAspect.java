@@ -18,7 +18,9 @@ public class LoggerAspect {
     ObjectMapper objectMapper = new ObjectMapper();
 
 
+
     @Around("execution(* com.dataTable.controller.*.*(..))")
+ //  @Around("execution(public * *(..))")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = buildMethodName(joinPoint);
         String requestData = buildRequestData(joinPoint);
@@ -29,6 +31,7 @@ public class LoggerAspect {
         info("RESPONSE: " + methodName.concat(" ").concat(objectMapper.writeValueAsString(returnValue)));
         return returnValue;
     }
+
 
     private String buildMethodName(JoinPoint joinPoint){
         StringBuffer buffer = new StringBuffer();
@@ -51,6 +54,10 @@ public class LoggerAspect {
         }
         return buffer.toString();
     }
+
+
+
+
 
 }
 
